@@ -1,0 +1,45 @@
+/* Main navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    height: 60px;
+    padding: 0 24px;
+  
+    background-color: #131921; /* Amazon dark */
+  }
+  
+  /* Left section */
+  .navbar__left {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Logo */
+  .navbar__logo {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  
+    cursor: pointer;
+  }
+  
+  .navbar__logo::after {
+    content: ".in";
+    color: #f3a847;
+    font-size: 14px;
+    margin-left: 2px;
+  }
+  
+  /* Links container */
+  .navbar__links {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  /* Individual links*
+  
