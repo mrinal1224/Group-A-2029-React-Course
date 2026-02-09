@@ -1,0 +1,77 @@
+.card {
+    width: 280px;
+    background-color: #ffffff;
+  
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+    overflow: hidden;
+    cursor: pointer;
+  
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  /* Hover lift */
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Image */
+  .card__image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  /* Content */
+  .card__content {
+    padding: 16px;
+  }
+  
+  /* Title */
+  .card__title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #0f1111;
+  }
+  
+  /* Description */
+  .card__description {
+    font-size: 14px;
+    color: #565959;
+    margin-bottom: 12px;
+  }
+  
+  /* Footer */
+  .card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Price */
+  .card__price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #b12704; /* Amazon-like price color */
+  }
+  
+  /* Button */
+  .card__button {
+    padding: 6px 12px;
+  
+    background-color: #ffd814;
+    border: 1px solid #fcd200;
+    border-radius: 4px;
+  
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .card__button:hover {
+    background-color: #f7ca00;
+  }
+  
