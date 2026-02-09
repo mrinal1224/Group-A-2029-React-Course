@@ -6,20 +6,20 @@
     <title>Document</title>
     <script
       crossorigin
-      src="https://unpkg.com/react@18/umd/react.development.js"
+      src="https://unpkg.com/react@17/umd/react.development.js"
     ></script>
     <script
       crossorigin
-      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
     ></script>
   </head>
   <body>
     <div id="root"></div>
   </body>
   <script>
-    // const root = document.getElementById("root");
-
-    // const heading1 = document.createElement("h1");
+    // This is how you do it with DOM
+    // let root = document.getElementById("root");
+    // let heading1 = document.createElement("h1");
 
     // heading1.innerText = "Hello";
 
@@ -27,11 +27,46 @@
 
     // React
 
-    let root = document.getElementById("root");
-    // type , props , children
-    let heading1 = React.createElement("h1", {}, "Hello");
+    const root = document.getElementById("root");
 
-    // render
+    const heading1 = React.createElement(
+      "h1",
+      { style: { color: "red" } },
+      "hello"
+    );
+
+const nestedElements = React.createElement(
+  "div", // 1. Parent Element Type
+  { 
+    id: "main-container",
+    className: "wrapper",
+    style: { padding: "20px", backgroundColor: "#f0f0f0" }
+  }, // 2. Parent Props
+  
+  // 3. First Child (Header Div)
+  React.createElement(
+    "div",
+    { className: "header", key: "header-div" },
+    React.createElement("h1", { style: { color: "blue" } }, "Welcome Back"),
+    React.createElement("span", null, "User: Admin")
+  ),
+
+  // 4. Second Child (Content Div)
+  React.createElement(
+    "div",
+    { 
+      className: "content", 
+      key: "content-div",
+      style: { marginTop: "10px", background: "white", padding: "10px" } 
+    },
+    React.createElement("p", null, "Here is your dashboard overview."),
+    React.createElement(
+        "button", 
+        { onClick: () => alert("Clicked!") }, 
+        "Click Me"
+    )
+  )
+);
 
     ReactDOM.render(heading1, root);
   </script>

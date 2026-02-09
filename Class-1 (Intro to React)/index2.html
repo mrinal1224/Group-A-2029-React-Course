@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root2"></div>
+    <div id="root"></div>
+  </body>
+  <script type="text/babel">
+    // This is how you do it with DOM
+    let root2 = document.getElementById("root2");
+    let heading1 = document.createElement("h1");
+
+    heading1.innerText = "Hello";
+
+    root2.appendChild(heading1);
+
+    // React
+
+    const root = document.getElementById("root");
+
+    function NavBar() {
+      return (
+        <div>
+          <a>Home </a>
+          <a>About </a>
+          <a>Contact </a>
+          <a>Testimonials </a>
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div className="container">
+          <div>
+            <h1 style={{ color: "red" }}> Hello </h1>
+             <NavBar/>
+          </div>
+        </div>
+      );
+    }
+
+   
+    // JSX - Transpilation with Babel
+
+    ReactDOM.render(<App/>, root);
+  </script>
+</html>
