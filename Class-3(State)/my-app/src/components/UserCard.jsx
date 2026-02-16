@@ -14,7 +14,8 @@ function UserCard() {
         border: "1px solid black",
         padding: "20px",
         borderRadius: "8px",
-        textAlign: "center"
+        textAlign: "center",
+        background:'dodgerblue'
       }}
     >
         
