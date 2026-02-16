@@ -7,7 +7,12 @@
 
 import React, { useState } from "react";
 
+import {User} from './user'
+
 function UserCard() {
+   const [showEmail ,setShowEmail] = useState(false)
+
+
   return (
     <div
       style={{
@@ -18,7 +23,27 @@ function UserCard() {
         background:'dodgerblue'
       }}
     >
+        <img src={User.picture.large}/>
+
+
         
+
+        <h4>{User.name.first}  {User.name.last}</h4>
+        <button onClick={()=>setShowEmail(true)}>Show Email</button>
+        <button onClick={()=>setShowEmail(false)}>Hide Email</button>
+
+        <h4>{showEmail && User.email}</h4>
+
+        <h5> Age : {User.dob.age} ({User.dob.age >= 18 ? "Adult" : "Minor"})</h5>
+
+        <h5>{User.location.city} {User.location.country}</h5>
+
+        <h6>{User.gender}</h6>
+
+
+        
+
+        <p></p>
     </div>
   );
 }
