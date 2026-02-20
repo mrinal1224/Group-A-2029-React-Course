@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import ProductList from './components/ProductList'
 import Counter from './components/Counter'
+import UserComponet from './components/UserComponet'
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
 
   return (
     <>
-        <Counter/>
+        <UserComponet/>
     </>
   )
 }
