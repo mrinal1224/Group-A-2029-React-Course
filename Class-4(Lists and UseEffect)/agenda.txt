@@ -1,0 +1,6 @@
+How to Render an Entrie List in React
+Using the useEffect hook
+different variations of the useEffect hook
+how to apply useEffect hook for external Systems
+
+Starting at 3:10 PM
