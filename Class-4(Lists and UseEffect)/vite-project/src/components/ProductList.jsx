@@ -19,9 +19,9 @@ function ProductList() {
   return (
     <div>
         <ol>
-          { Products.map(function(product){
-            return <li>{product.name}  {product.price}$</li>
-          })}
+          { Products.map((product)=>(
+            <li>{product.name}  {product.price}$</li>
+            ))}
         </ol>
     </div>
   )
