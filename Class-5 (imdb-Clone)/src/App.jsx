@@ -1,3 +1,4 @@
+import { useState } from "react";
 import MoodSelector from "./components/MoodSelector";
 import Movies from "./components/Movies";
 import Navbar from "./components/Navbar";

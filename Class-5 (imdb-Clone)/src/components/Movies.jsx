@@ -1,11 +1,25 @@
 import React from 'react'
+import Banner from './Banner'
+import MovieCard from './MovieCard'
 
 function Movies() {
   return (
     <div>
+        <Banner/>
 
+        <div className='mt-10 flex gap-6 flex-wrap justify-evenly'>
 
-        <h1 className='text-red-500 text-3xl'>Movies Page</h1>
+        <MovieCard/>
+        <MovieCard/>  
+        <MovieCard/>   
+        <MovieCard/>
+        <MovieCard/>
+        <MovieCard/>
+        <MovieCard/>
+        <MovieCard/>
+        <MovieCard/>
+        <MovieCard/>
+        </div>
     </div>
   )
 }
