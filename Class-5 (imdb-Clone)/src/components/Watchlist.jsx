@@ -1,4 +1,5 @@
 import React from "react";
+import { genreids } from "../genres";
 
 function Watchlist({ watchlist }) {
   return (
@@ -35,7 +36,7 @@ function Watchlist({ watchlist }) {
               <td className="px-6 py-4">{movieObj.popularity}</td>
               <td className="px-6 py-4">
                 <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">
-                  Action
+               {genreids[movieObj.genre_ids[0]]}
                 </span>
               </td>
               <td className="px-6 py-4">
