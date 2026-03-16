@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { genreids } from "../genres";
 
 function Watchlist({ watchlist }) {
+  const [genreList, setGenreList] = useState([]);
+
+  useEffect(() => {
+    let genreArr = watchlist.map((movieObj) => genreids[movieObj.genre_ids[0]]);
+    let temp = new Set(genreArr);
+    let list = ["All Genres", ...temp];
+    setGenreList(list);
+  }, [watchlist]);
+
   return (
     <div className="overflow-hidden rounded-lg border border-gray-200 m-8">
+      
+      {/* Centered Genre List */}
+      <div className="flex flex-wrap justify-center gap-4 py-5 bg-gray-50 border-b">
+        {genreList.map((genre) => (
+          <div
+            key={genre}
+            className="px-6 py-2 border rounded-xl bg-blue-500 text-white font-bold text-sm cursor-pointer hover:bg-blue-600 transition-colors"
+          >
+            {genre}
+          </div>
+        ))}
+      </div>
+
+      {/* Table Section */}
       <table className="w-full text-left text-sm text-gray-500">
         <thead className="bg-gray-50 text-gray-700 uppercase font-semibold">
           <tr>
@@ -18,10 +41,10 @@ function Watchlist({ watchlist }) {
 
         <tbody className="divide-y divide-gray-200 bg-white">
           {watchlist.map((movieObj) => (
-            <tr className="hover:bg-gray-50 transition-colors">
+            <tr key={movieObj.id} className="hover:bg-gray-50 transition-colors">
               <td className="px-6 py-4">
                 <div
-                  className="h-20 w-14 bg-cover bg-center rounded-md"
+                  className="h-20 w-14 bg-cover bg-center rounded-md shadow-sm"
                   style={{
                     backgroundImage: `url('https://image.tmdb.org/t/p/w500/${movieObj.poster_path}')`,
                   }}
@@ -31,12 +54,14 @@ function Watchlist({ watchlist }) {
                 {movieObj.title}
               </td>
               <td className="px-6 py-4">
-                <span className="flex items-center">{movieObj.vote_average}</span>
+                <span className="flex items-center">
+                  ⭐ {movieObj.vote_average}
+                </span>
               </td>
               <td className="px-6 py-4">{movieObj.popularity}</td>
               <td className="px-6 py-4">
                 <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">
-               {genreids[movieObj.genre_ids[0]]}
+                  {genreids[movieObj.genre_ids[0]]}
                 </span>
               </td>
               <td className="px-6 py-4">

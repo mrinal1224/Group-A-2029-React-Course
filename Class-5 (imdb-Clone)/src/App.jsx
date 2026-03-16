@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MoodSelector from "./components/MoodSelector";
 import Movies from "./components/Movies";
 import Navbar from "./components/Navbar";
@@ -11,9 +11,21 @@ function App() {
   function addToWatchList(movieObj) {
     // task - only allow unique movies in the watchlist
     watchlist.push(movieObj);
-    console.log(watchlist)
+    console.log(watchlist);
     setWatchList(watchlist);
+
+    localStorage.setItem("moviesFromLS", JSON.stringify(watchlist));
   }
+
+  //
+  useEffect(() => {
+    let moviesFromLS = localStorage.getItem("moviesFromLS");
+    if (!moviesFromLS) {
+      return;
+    }
+    let movies = JSON.parse(moviesFromLS);
+    setWatchList(movies);
+  }, []);
 
   return (
     <>
@@ -21,8 +33,14 @@ function App() {
         <Navbar />
 
         <Routes>
-          <Route path="/" element={<Movies addToWatchList={addToWatchList}/>} />
-          <Route path="/watchlist" element={<Watchlist watchlist={watchlist} />} />
+          <Route
+            path="/"
+            element={<Movies addToWatchList={addToWatchList} />}
+          />
+          <Route
+            path="/watchlist"
+            element={<Watchlist watchlist={watchlist} />}
+          />
           <Route path="/mood" element={<MoodSelector />} />
         </Routes>
       </BrowserRouter>
