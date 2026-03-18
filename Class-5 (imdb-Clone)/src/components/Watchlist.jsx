@@ -4,11 +4,14 @@ import { genreids } from "../genres";
 function Watchlist({ watchlist }) {
   const [genreList, setGenreList] = useState([]);
   const [currentGenre, setCurrentGenre] = useState("All Genres");
+  const [search , setSearch] = useState('')
+
+  console.log(search)
 
   function changeGenre(genre) {
     setCurrentGenre(genre);
   }
-  console.log(currentGenre);
+  // console.log(currentGenre);
 
   useEffect(() => {
     let genreArr = watchlist.map((movieObj) => genreids[movieObj.genre_ids[0]]);
@@ -23,13 +26,43 @@ function Watchlist({ watchlist }) {
       <div className="flex flex-wrap justify-center gap-4 py-5 bg-gray-50 border-b">
         {genreList.map((genre) => (
           <div
-            key={genre}
             onClick={() => changeGenre(genre)}
             className="px-6 py-2 border rounded-xl bg-blue-500 text-white font-bold text-sm cursor-pointer hover:bg-blue-600 transition-colors"
           >
             {genre}
           </div>
         ))}
+      </div>
+
+      {/* Search Bar */}
+
+      <div className="flex justify-center my-6 px-4">
+        <div className="relative w-full max-w-md">
+          <input
+            type="text"
+            placeholder="Search Movies"
+            className="w-full h-12 px-5 pl-12 rounded-xl bg-gray-100 border-none outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white transition-all text-gray-700 shadow-sm"
+            onChange={(e)=>setSearch(e.target.value)}
+            value={search}
+          />
+          {/* Optional Search Icon */}
+          <div className="absolute left-4 top-3.5 text-gray-400">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
 
       {/* Table Section */}
@@ -51,7 +84,7 @@ function Watchlist({ watchlist }) {
               (movieObj) =>
                 currentGenre === "All Genres" ||
                 genreids[movieObj.genre_ids[0]] === currentGenre
-            )
+            ).filter((movieObj)=>movieObj.title.toLowerCase().includes(search.toLowerCase()))
             .map((movieObj) => (
               <tr
                 key={movieObj.id}
