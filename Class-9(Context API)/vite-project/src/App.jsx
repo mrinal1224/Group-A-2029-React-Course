@@ -1,6 +1,7 @@
 import Parent1 from "./components/Parent1";
 import "./App.css";
-
+import { ParkContext } from "./components/ParkContext";
+import Child3 from "./components/Child3";
 
 function App() {
   const parkInfo = {
@@ -24,7 +25,11 @@ function App() {
   };
   return (
     <>
-      <Parent1 />
+      <ParkContext.Provider value={parkInfo}>
+        <Parent1 />
+      </ParkContext.Provider>
+
+      <Child3/>
     </>
   );
 }
