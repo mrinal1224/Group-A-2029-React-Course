@@ -6,7 +6,7 @@ import Pagination from "./Pagination";
 
 //  https://api.themoviedb.org/3/movie/popular?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=3
 
-function Movies({addToWatchList}) {
+function Movies() {
   // get the data from the url
   // in the app and show the data on the console
 
@@ -41,7 +41,7 @@ function decrementPage() {
 
       <div className="m-10  flex gap-6 flex-wrap justify-evenly">
        {movies.map((movieObj)=>{
-        return <MovieCard addWatchList={addToWatchList} movieObj={movieObj} title={movieObj.title} posterUrl={movieObj.poster_path}/>
+        return <MovieCard  movieObj={movieObj} title={movieObj.title} posterUrl={movieObj.poster_path}/>
        })}
       </div>
 

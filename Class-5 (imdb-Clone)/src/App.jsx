@@ -4,6 +4,7 @@ import Movies from "./components/Movies";
 import Navbar from "./components/Navbar";
 import Watchlist from "./components/Watchlist";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { MovieContext } from "./components/MovieContext";
 
 function App() {
   const [watchlist, setWatchList] = useState([]);
@@ -29,13 +30,14 @@ function App() {
 
   return (
     <>
+    <MovieContext.Provider value={{addToWatchList}}>
       <BrowserRouter>
         <Navbar />
 
         <Routes>
           <Route
             path="/"
-            element={<Movies addToWatchList={addToWatchList} />}
+            element={<Movies  />}
           />
           <Route
             path="/watchlist"
@@ -44,6 +46,7 @@ function App() {
           <Route path="/mood" element={<MoodSelector />} />
         </Routes>
       </BrowserRouter>
+      </MovieContext.Provider>
     </>
   );
 }
