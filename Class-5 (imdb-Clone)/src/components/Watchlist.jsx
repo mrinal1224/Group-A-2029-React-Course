@@ -1,24 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { genreids } from "../genres";
+import { MovieContext } from "./MovieContext";
 
 function Watchlist({ watchlist }) {
-  const [genreList, setGenreList] = useState([]);
   const [currentGenre, setCurrentGenre] = useState("All Genres");
-  const [search , setSearch] = useState('')
+  const [search, setSearch] = useState("");
 
-  console.log(search)
+  const { removeFromWatchList } = useContext(MovieContext);
+
+  const genreList = useMemo(() => {
+    const genreArr = watchlist
+      .map((movieObj) => genreids[movieObj?.genre_ids?.[0]])
+      .filter(Boolean);
+    const uniqueGenres = Array.from(new Set(genreArr));
+    return ["All Genres", ...uniqueGenres];
+  }, [watchlist]);
+
+  const searchLower = search.trim().toLowerCase();
 
   function changeGenre(genre) {
     setCurrentGenre(genre);
   }
-  // console.log(currentGenre);
 
-  useEffect(() => {
-    let genreArr = watchlist.map((movieObj) => genreids[movieObj.genre_ids[0]]);
-    let temp = new Set(genreArr);
-    let list = ["All Genres", ...temp];
-    setGenreList(list);
-  }, [watchlist]);
+  function handleDelete(movieId) {
+    removeFromWatchList(movieId);
+  }
 
   return (
     <div className="overflow-hidden rounded-lg border border-gray-200 m-8">
@@ -83,8 +89,11 @@ function Watchlist({ watchlist }) {
             .filter(
               (movieObj) =>
                 currentGenre === "All Genres" ||
-                genreids[movieObj.genre_ids[0]] === currentGenre
-            ).filter((movieObj)=>movieObj.title.toLowerCase().includes(search.toLowerCase()))
+                genreids[movieObj?.genre_ids?.[0]] === currentGenre
+            )
+            .filter((movieObj) =>
+              (movieObj?.title ?? "").toLowerCase().includes(searchLower)
+            )
             .map((movieObj) => (
               <tr
                 key={movieObj.id}
@@ -113,7 +122,11 @@ function Watchlist({ watchlist }) {
                   </span>
                 </td>
                 <td className="px-6 py-4">
-                  <button className="text-red-500 hover:text-red-700 font-semibold cursor-pointer">
+                  <button
+                    onClick={() => handleDelete(movieObj.id)}
+                    className="text-red-500 hover:text-red-700 font-semibold cursor-pointer"
+                    type="button"
+                  >
                     Delete
                   </button>
                 </td>
