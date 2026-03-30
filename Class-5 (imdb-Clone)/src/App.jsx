@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
-import MoodSelector from "./components/MoodSelector";
 import Movies from "./components/Movies";
 import Navbar from "./components/Navbar";
 import Watchlist from "./components/Watchlist";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MovieContext } from "./components/MovieContext";
+import MoodMovieFeature from "./features/MoodMovieFeature";
 
 function App() {
   const [watchlist, setWatchList] = useState(() => {
@@ -59,7 +59,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Movies />} />
             <Route path="/watchlist" element={<Watchlist watchlist={watchlist} />} />
-            <Route path="/mood" element={<MoodSelector />} />
+            <Route path="/mood" element={<MoodMovieFeature />} />
           </Routes>
         </BrowserRouter>
       </MovieContext.Provider>
