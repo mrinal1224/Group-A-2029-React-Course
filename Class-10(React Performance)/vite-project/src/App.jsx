@@ -1,15 +1,20 @@
-
-import './App.css'
-import MouseTracker from './components/MouseTracker'
+import "./App.css";
+import About from "./components/About";
+import MouseTracker from "./components/MouseTracker";
+import Timer from "./components/Timer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-
-
   return (
     <>
-      <MouseTracker/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Timer />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
