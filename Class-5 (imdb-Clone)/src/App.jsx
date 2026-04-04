@@ -7,7 +7,7 @@ import { MovieContext } from "./components/MovieContext";
 import MoodMovieFeature from "./features/MoodMovieFeature";
 
 function App() {
-  const [watchlist, setWatchList] = useState(() => {
+  let [watchlist, setWatchList] = useState(() => {
     const moviesFromLS = localStorage.getItem("moviesFromLS");
     if (!moviesFromLS) return [];
 
@@ -27,6 +27,9 @@ function App() {
       return [];
     }
   });
+
+
+  console.log(watchlist)
 
   useEffect(() => {
     localStorage.setItem("moviesFromLS", JSON.stringify(watchlist));
