@@ -1,5 +1,6 @@
 import "./App.css";
 import About from "./components/About";
+import AnalyticsWithoutMemo from "./components/Analytics";
 import MouseTracker from "./components/MouseTracker";
 import Parent from "./components/Parent";
 import Timer from "./components/Timer";
@@ -15,7 +16,7 @@ function App() {
         </Routes>
       </BrowserRouter> */}
 
-      <Parent/>
+     <AnalyticsWithoutMemo/>
     </>
   );
 }
