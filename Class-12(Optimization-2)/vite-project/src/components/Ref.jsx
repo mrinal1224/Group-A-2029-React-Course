@@ -16,6 +16,7 @@ function Ref() {
     inputRef.current.focus()
     inputRef.current.style.backgroundColor = 'red'
     
+
   }
 
   return (
