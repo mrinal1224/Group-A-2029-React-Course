@@ -3,7 +3,6 @@ import Banner from "./Banner";
 import MovieCard from "./MovieCard";
 import axios from "axios";
 import Pagination from "./Pagination";
-import MoodMovieFeature from "../features/MoodMovieFeature";
 
 const TMDB_API_KEY =
   import.meta.env.VITE_TMDB_API_KEY || "3aec63790d50f3b9fc2efb4c15a8cf99";
@@ -65,15 +64,7 @@ function Movies() {
         </div>
       )}
 
-      <Pagination
-        decrementPage={decrementPage}
-        incrementPage={incrementPage}
-        pageNo={pageNo}
-      />
-
-      <div className="mt-12 px-2">
-        <MoodMovieFeature />
-      </div>
+      <Pagination decrementPage={decrementPage} incrementPage={incrementPage} pageNo={pageNo}/>
     </div>
   );
 }
